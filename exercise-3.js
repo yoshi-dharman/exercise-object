@@ -10,21 +10,42 @@ let todos = [
   }
 
   function printByID(id){
-    console.log(todos[id-1].id+", "+todos[id-1].todo);
+    console.log("---print By ID---");
+    todos.map((item, index, object) => {
+      if(item.id == id){
+        console.log(object[index].id+", "+object[index].todo);
+      }
+    });
+
+    // console.log(todos[id-1].id+", "+todos[id-1].todo);
   }
 
   function add(newTodo){
+    console.log("---ADD---");
     todos.push({id: todos.length+1, todo: newTodo});
     printAll();
   }
 
   function deleteByID(id){
-    delete todos[id-1];
+    console.log("---delete---");
+    todos.map((item, index, object) => {
+      if(item.id == id){
+        delete object[index];
+      } 
+    });
+
+    // delete todos[id-1];
     printAll();
   }
 
   function updateByID(id,newTodo){
-    todos[id-1].todo = newTodo;
+    console.log("---update---");
+    todos.map((item, index, object) => {
+      if(item.id == id){
+        object[index].todo = newTodo;
+      }
+    });
+    // todos[id-1].todo = newTodo;
     printAll();
   }
 
